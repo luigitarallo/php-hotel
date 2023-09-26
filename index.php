@@ -77,6 +77,39 @@ $hotels = [
             </p>
         <?php endforeach; ?>
 
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Parking</th>
+                    <th scope="col">Vote</th>
+                    <th scope="col">Km from center</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($hotels as $key => $hotel): ?>
+                    <tr>
+                        <th scope="row">
+                            <?php echo $hotel['name']; ?>
+                        </th>
+                        <td>
+                            <?php echo $hotel['description']; ?>
+                        </td>
+                        <td>
+                            <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
+                        </td>
+                        <td>
+                            <?php echo $hotel['vote']; ?>
+                        </td>
+                        <td>
+                            <?php echo $hotel['distance_to_center']; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 

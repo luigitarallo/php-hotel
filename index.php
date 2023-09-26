@@ -39,9 +39,9 @@ $hotels = [
     ],
 
 ];
-// Controllo che siano stati selezionati dei valori altrimenti li imposto su "vuoti"
-$filterParking = isset($_GET['parking']) ? $_GET['parking'] : '';
-$filterRating = isset($_GET['rating']) ? $_GET['rating'] : '';
+// Controllo che siano stati selezionati dei valori e nel caso li prendo, altrimenti li imposto su "vuoti"
+$filter_parking = isset($_GET['parking']) ? $_GET['parking'] : '';
+$filter_vote = isset($_GET['rating']) ? $_GET['rating'] : '';
 
 ?>
 
@@ -97,23 +97,37 @@ $filterRating = isset($_GET['rating']) ? $_GET['rating'] : '';
             </thead>
             <tbody>
                 <?php foreach ($hotels as $hotel): ?>
-                    <tr>
-                        <th scope="row">
-                            <?php echo $hotel['name']; ?>
-                        </th>
-                        <td>
-                            <?php echo $hotel['description']; ?>
-                        </td>
-                        <td>
-                            <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
-                        </td>
-                        <td>
-                            <?php echo $hotel['vote']; ?>
-                        </td>
-                        <td>
-                            <?php echo $hotel['distance_to_center']; ?>
-                        </td>
-                    </tr>
+                    <?php
+                    $showHotel = true;
+
+                    if ($filter_parking !== '' && $hotel['parking'] != $filter_parking) {
+                        $showHotel = false;
+                    }
+
+                    if ($filter_vote !== '' && $hotel['vote'] < $filter_vote) {
+                        $showHotel = false;
+                    }
+
+                    if ($showHotel):
+                        ?>
+                        <tr>
+                            <th scope="row">
+                                <?php echo $hotel['name']; ?>
+                            </th>
+                            <td>
+                                <?php echo $hotel['description']; ?>
+                            </td>
+                            <td>
+                                <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
+                            </td>
+                            <td>
+                                <?php echo $hotel['vote']; ?>
+                            </td>
+                            <td>
+                                <?php echo $hotel['distance_to_center']; ?>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>
         </table>

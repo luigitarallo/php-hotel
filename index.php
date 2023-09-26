@@ -57,11 +57,24 @@ $hotels = [
 
 <body>
     <div class="container">
+        <h1 class="text-center text-success">The Best Hotels in the World</h1>
 
         <?php foreach ($hotels as $key => $hotel): ?>
             <h2>
                 <?php echo $hotel['name']; ?>
             </h2>
+            <p class="text-primary"> Description:
+                <?php echo $hotel['description']; ?>
+            </p>
+            <p class="text-danger"> Parking:
+                <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
+            </p>
+            <p class="text-secondary"> Vote:
+                <?php echo $hotel['vote']; ?>
+            </p>
+            <p> Distance from center:
+                <?php echo $hotel['distance_to_center']; ?> Km
+            </p>
         <?php endforeach; ?>
 
     </div>

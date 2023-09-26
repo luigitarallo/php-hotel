@@ -39,8 +39,9 @@ $hotels = [
     ],
 
 ];
-
-
+// Controllo che siano stati selezionati dei valori altrimenti li imposto su "vuoti"
+$filterParking = isset($_GET['parking']) ? $_GET['parking'] : '';
+$filterRating = isset($_GET['rating']) ? $_GET['rating'] : '';
 
 ?>
 
@@ -87,9 +88,9 @@ $hotels = [
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col" class="text-success">Name</th>
-                    <th scope="col" class="text-danger">Description</th>
-                    <th scope="col" class="text-primary">Parking</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Parking</th>
                     <th scope="col">Vote</th>
                     <th scope="col">Km from center</th>
                 </tr>
@@ -106,7 +107,7 @@ $hotels = [
                         <td>
                             <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
                         </td>
-                        <td class="text-warning">
+                        <td>
                             <?php echo $hotel['vote']; ?>
                         </td>
                         <td>

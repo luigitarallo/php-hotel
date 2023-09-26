@@ -40,6 +40,8 @@ $hotels = [
 
 ];
 
+
+
 ?>
 
 <!DOCTYPE html>
@@ -58,8 +60,7 @@ $hotels = [
 <body>
     <div class="container">
         <h1 class="text-center text-success">The Best Hotels in the World</h1>
-
-        <?php foreach ($hotels as $key => $hotel): ?>
+        <?php foreach ($hotels as $hotel): ?>
             <h2>
                 <?php echo $hotel['name']; ?>
             </h2>
@@ -85,11 +86,10 @@ $hotels = [
                     <th scope="col">Parking</th>
                     <th scope="col">Vote</th>
                     <th scope="col">Km from center</th>
-
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($hotels as $key => $hotel): ?>
+                <?php foreach ($hotels as $hotel): ?>
                     <tr>
                         <th scope="row">
                             <?php echo $hotel['name']; ?>

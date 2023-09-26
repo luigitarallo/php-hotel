@@ -56,7 +56,15 @@ $hotels = [
 </head>
 
 <body>
+    <div class="container">
 
+        <?php foreach ($hotels as $key => $hotel): ?>
+            <h2>
+                <?php echo $hotel['name']; ?>
+            </h2>
+        <?php endforeach; ?>
+
+    </div>
 </body>
 
 </html>

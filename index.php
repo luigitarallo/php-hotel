@@ -59,31 +59,37 @@ $hotels = [
 
 <body>
     <div class="container">
-        <h1 class="text-center text-success">The Best Hotels in the World</h1>
-        <?php foreach ($hotels as $hotel): ?>
-            <h2>
-                <?php echo $hotel['name']; ?>
-            </h2>
-            <p class="text-primary"> Description:
-                <?php echo $hotel['description']; ?>
-            </p>
-            <p class="text-danger"> Parking:
-                <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
-            </p>
-            <p class="text-secondary"> Vote:
-                <?php echo $hotel['vote']; ?>
-            </p>
-            <p> Distance from center:
-                <?php echo $hotel['distance_to_center']; ?> Km
-            </p>
-        <?php endforeach; ?>
-
+        <h1>Hotel Filters</h1>
+        <!-- FORM -->
+        <form method="GET">
+            <div class="form-group">
+                <label for="parking">Filter by Parking:</label>
+                <select name="parking" id="parking" class="form-control">
+                    <option value="">All</option>
+                    <option value="1">With Parking</option>
+                    <option value="0">Without Parking</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vote">Filter by Vote:</label>
+                <select name="vote" id="vote" class="form-control">
+                    <option value="">All</option>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Apply Filters</button>
+        </form>
+        <!-- TABLE -->
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Parking</th>
+                    <th scope="col" class="text-success">Name</th>
+                    <th scope="col" class="text-danger">Description</th>
+                    <th scope="col" class="text-primary">Parking</th>
                     <th scope="col">Vote</th>
                     <th scope="col">Km from center</th>
                 </tr>
@@ -100,7 +106,7 @@ $hotels = [
                         <td>
                             <?php echo $hotel['parking'] ? 'Yes' : 'No'; ?>
                         </td>
-                        <td>
+                        <td class="text-warning">
                             <?php echo $hotel['vote']; ?>
                         </td>
                         <td>
